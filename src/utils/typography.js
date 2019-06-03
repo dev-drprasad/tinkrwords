@@ -8,6 +8,8 @@ Wordpress2016.overrideThemeStyles = () => {
     },
   }
 }
+Wordpress2016.headerFontFamily =  ["Merriweather", "Helvetica", "sans-serif"],
+Wordpress2016.bodyFontFamily = ["Montserrat", "Open Sans", "serif"],
 
 delete Wordpress2016.googleFonts
 

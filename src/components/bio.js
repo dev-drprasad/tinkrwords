@@ -38,11 +38,12 @@ function Bio() {
               }}
             />
             <p style={{...scale(-0.1)}}>
-              Written by <strong>{author}</strong>
-              <br />
+              Personal blog by <strong style={{ marginRight: 10 }}>{author}.</strong>
               <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
+                Follow me on Twitter
               </a>
+              <br />
+              Writes about my tinkerings, things i think i forget and et cetera
             </p>
           </div>
         )

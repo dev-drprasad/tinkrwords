@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `TinkrWords`,
     author: `REDDY PRASAD`,
-    description: `Writes about things i think i will forget`,
+    description: `Writes about my tinkerings, things i think i forget and et cetera`,
     siteUrl: `https://blog.reddyprasad.me/`,
     social: {
       twitter: `dev_drprasad`,
