@@ -10,6 +10,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import { rhythm, scale } from "../utils/typography"
+import { ClientError } from "graphql-request";
 
 function Bio() {
   return (
@@ -22,6 +23,7 @@ function Bio() {
             style={{
               display: `flex`,
               marginBottom: rhythm(2.5),
+              alignItems: "center",
             }}
           >
             <Image
@@ -37,13 +39,14 @@ function Bio() {
                 borderRadius: `50%`,
               }}
             />
-            <p style={{...scale(-0.1)}}>
-              Personal blog by <strong style={{ marginRight: 10 }}>{author}.</strong>
+            <p style={{...scale(-0.1), margin: 0}}>
+              Personal blog by <strong>{author}.</strong>
+              <br />
+              Writes about my tinkerings, things i think i forget and et cetera.
+              <br />
               <a href={`https://twitter.com/${social.twitter}`}>
                 Follow me on Twitter
               </a>
-              <br />
-              Writes about my tinkerings, things i think i forget and et cetera
             </p>
           </div>
         )
