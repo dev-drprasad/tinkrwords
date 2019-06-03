@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `REDDY PRASAD's Blog`,
+    title: `TinkrWords`,
     author: `REDDY PRASAD`,
     description: `Writes about things i think i will forget`,
     siteUrl: `https://blog.reddyprasad.me/`,
@@ -57,13 +57,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `TinkrWords Blog`,
+        short_name: `TinkrWords`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/app-icon.png`,
       },
     },
     `gatsby-plugin-offline`,
