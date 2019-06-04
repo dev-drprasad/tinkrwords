@@ -10,7 +10,6 @@ import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import { rhythm, scale } from "../utils/typography"
-import { ClientError } from "graphql-request";
 
 function Bio() {
   return (
