@@ -36,3 +36,58 @@ server.listen(8000);
 ```
 
 I am using react to consume API
+
+```jsx
+import React, { useEffect, useState} from "react";
+
+const decoder = new TextDecoder("utf-8");
+
+async function* logReader() {
+  const url = 'http://localhost:8000/api';
+  const response = await fetch(url);
+  const reader = response.body.getReader();
+
+
+  while (true) {
+    const {done, value} = await reader.read();
+    if (done) break;
+    const decoded =  decoder.decode(value);
+    yield decoded;
+  }
+}
+
+const initialState = [];
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'RESET':
+      return initialState;
+    case 'APPEND_LOG':
+      return [...state, ...action.payload];
+    default:
+      return state;
+  }
+};
+
+const LogViewer = () => {
+  const [logs, dispatch] = React.useReducer(reducer, initialState);
+
+  useEffect(() => {
+    (async function () {
+      for await(const log of logReader()) {
+        dispatch({ type: "APPEND_LOG", payload: log.split("\r").filter(Boolean) })
+      }
+    })()
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0,document.getElementById("LogViewer").scrollHeight);
+  }, [logs])
+
+  return (
+    <div id="LogViewer" style={{ whiteSpace: "pre" }}>{logs.join("\n")}</div>
+  )
+}
+
+export default LogViewer;
+```
