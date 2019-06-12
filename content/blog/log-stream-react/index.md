@@ -38,7 +38,7 @@ server.listen(8000);
 I am using react to consume API
 
 ```jsx
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 const decoder = new TextDecoder("utf-8");
 
@@ -71,6 +71,7 @@ const reducer = (state, action) => {
 
 const LogViewer = () => {
   const [logs, dispatch] = React.useReducer(reducer, initialState);
+  const ref = React.useRef();
 
   useEffect(() => {
     (async function () {
@@ -81,13 +82,30 @@ const LogViewer = () => {
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0,document.getElementById("LogViewer").scrollHeight);
+    ref.current.scrollTo(0, ref.current.scrollHeight);
   }, [logs])
 
   return (
-    <div id="LogViewer" style={{ whiteSpace: "pre" }}>{logs.join("\n")}</div>
+    <div id="LogViewer"
+      ref={ref}
+      style={{
+        whiteSpace: "pre",
+        fontFamily: "Fira Code",
+        fontWeight: 500,
+        margin: 15,
+        border: "1px solid #e1e2e3",
+        height: 400,
+        padding: 15,
+        borderRadius: 4,
+        overflow: "auto"
+      }}
+    >{logs.join("\n")}</div>
   )
 }
 
 export default LogViewer;
 ```
+
+output
+
+![git pull command logs](./log-stream-viewer.gif)
