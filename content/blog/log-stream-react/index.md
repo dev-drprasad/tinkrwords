@@ -4,9 +4,9 @@ date: "2019-06-04T11:07:31.394Z"
 description: Understand JavaScript Async generators and streams with pracitical example. We will create simple log viewer using React
 ---
 
-This post helps you to understand async generators practical use case.
+This post helps you to understand async generators and streams with an example. We are gonna implement logviewer of shell commands which shows shell output of `git pull` in real time. Showing logs in realtime gives better user experience than showing logs after command ran.
 
-We need simple API which gives stream output. Lets do that.
+We need backend API which returns stream of `git pull` command. I implemented simple endpoint for that using NodeJS standard library. yes, we don't need express.
 
 ```javascript
 import { spawn } from 'child_process';
@@ -34,6 +34,8 @@ server.on('request', (req, res) => {
 
 server.listen(8000);
 ```
+
+What we are trying to do is in above code is, we are piping `git pull` output to server response. Here `gitPull.stdout`, `gitPull.stderr` are ReadableStreams and `res` is WritableStream. what `pipe` does is, its read from `gitPull.stdout` when data avaible and writes to `res` internally.
 
 I am using react to consume API
 
